@@ -1,0 +1,90 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?><file>
+    <client cardNumber="1234">
+        <username>sebi99</username>
+        <password>3��ih&#23;X&#25;=���
+            &#18;LB�����y���M�&gt;&#20;tL�W&#18;�FD���&#15;�&#6;
+            s���A{��&#23;Y�-&#21;拋f��</password>
+        <firstName>Sebastian</firstName>
+        <lastName>Sofran</lastName>
+        <iban>RO43231IBAN342</iban>
+        <sold>15000</sold>
+        <managerID>1</managerID>
+        <loans>
+            <loan>
+                <desiredAmount>3500</desiredAmount>
+                <status>Accepted</status>
+                <message>20.03.2019 - deadline</message>
+                <usernameClient>cerbu</usernameClient>
+            </loan>
+            <loan>
+                <desiredAmount>2000</desiredAmount>
+                <status>Rejected</status>
+                <message>You already have a loan!</message>
+                <usernameClient>cerbu</usernameClient>
+            </loan>
+            <loan>
+                <desiredAmount>3610</desiredAmount>
+                <status>Accepted</status>
+                <message>6.12.2023 - deadline</message>
+                <usernameClient>cerbu</usernameClient>
+            </loan>
+        </loans>
+    </client>
+    <client cardNumber="5678">
+        <username>belegea</username>
+        <password>;���3$��H�g��}rG��{OTժ�Z�;0�&#19;l�KO4t��&#14;�q.��E�!�&#11;&lt;�+�&lt;9&#12;&#19;&#14;�x�xR�</password>
+        <firstName>Cristina</firstName>
+        <lastName>Golban</lastName>
+        <iban>RO43246IBAN307</iban>
+        <sold>10000</sold>
+        <managerID>1</managerID>
+        <loans>
+            <loan>
+                <desiredAmount>200</desiredAmount>
+                <status>Accepted</status>
+                <message>15.07.2020 - deadline</message>
+                <usernameClient>belegea</usernameClient>
+            </loan>
+        </loans>
+    </client>
+    <client cardNumber="9012">
+        <username>vic</username>
+        <password>�&#23;	�H&#1;z&#18;�6��h\c�&#31;9�&#27;aP�K)����q@9�&#19;d�&#19;&#18;U&#23;ŤYP��]&#3;�6�+�M+��bYLyU</password>
+        <firstName>Victor</firstName>
+        <lastName>Bobosila</lastName>
+        <iban>RO13456IBAN965</iban>
+        <sold>1700</sold>
+        <managerID>2</managerID>
+        <loans>
+            <loan>
+                <desiredAmount>10000</desiredAmount>
+                <status>Accepted</status>
+                <message>19.03.2021 - deadline</message>
+                <usernameClient>vic</usernameClient>
+            </loan>
+        </loans>
+    </client>
+    <client cardNumber="3456">
+        <username>cucu</username>
+        <password>&#25;Zu�a&gt;���D�&#29;��4V�j���&#11;�Ɨ^X.)lЃ�d�J��&#12;Q�o*.�&#18;����tv:7&#17;�ɲW0��N</password>
+        <firstName>Diana</firstName>
+        <lastName>Bucu</lastName>
+        <iban>RO13456IBAN356</iban>
+        <sold>8900</sold>
+        <managerID>2</managerID>
+        <loans>
+            <loan>
+                <desiredAmount>8100</desiredAmount>
+                <status>Rejected</status>
+                <message>Yor desired amount is too bigger</message>
+                <usernameClient>cucu</usernameClient>
+            </loan>
+            <loan>
+                <desiredAmount>3750</desiredAmount>
+                <status>Accepted</status>
+                <message>01.12.2020 - dedline</message>
+                <usernameClient>cucu</usernameClient>
+            </loan>
+        </loans>
+    </client>
+</file>
