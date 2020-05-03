@@ -22,7 +22,7 @@ public class ClientMainInterface extends JFrame{
     JPanel principal;
     JPanel contPanel = new JPanel();
     CardLayout cardLOUT=new CardLayout();
-
+    SeeSoldPage soldPage;
 
     public ClientMainInterface(Client client){
         this.client=client;
@@ -54,6 +54,7 @@ public class ClientMainInterface extends JFrame{
 
     public JPanel returnPanelMainClinet(){
 
+        soldPage = new SeeSoldPage(client);
         contPanel.setLayout(cardLOUT);
 
         principal = new JPanel();
@@ -106,8 +107,22 @@ public class ClientMainInterface extends JFrame{
 
         contPanel.setBounds(0,0,665,403);
         contPanel.add(principal,"2");
+        contPanel.add(soldPage.returnPanel(),"soldPage");
 
 
+        buttonSold.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLOUT.show(contPanel,"soldPage");
+            }
+        });
+
+        soldPage.getButtonBack().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLOUT.show(contPanel,"2");
+            }
+        });
 
         return contPanel;
     }
