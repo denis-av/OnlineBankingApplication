@@ -80,6 +80,7 @@ public class LoginController {
         Loan loan=new Loan();
         try {
             client=new Client();
+
             File inputFile = new File("src\\main\\java\\org\\ADDU\\XML\\clientFile.xml");
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
