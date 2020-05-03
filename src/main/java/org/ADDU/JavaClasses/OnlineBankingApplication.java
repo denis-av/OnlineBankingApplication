@@ -46,6 +46,9 @@ public class OnlineBankingApplication extends JFrame{
     //The CardLayout which will let us to swich the screen
     private CardLayout cardLOUT = new CardLayout();
 
+    ClientMainInterface clientMainInterface;
+    ManagerMainInterface managerMainInterface;
+
     JDialog messText=new JDialog();
     JLabel message=new JLabel();
 
@@ -129,6 +132,71 @@ public class OnlineBankingApplication extends JFrame{
         contPanel.setBounds(0,0,665,403);
         contPanel.add(login,"1");//main screen
         cardLOUT.show(contPanel,"1");//main screen will be show
+
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(username.getText().equals("") || password.getText().equals("")){
+                    JOptionPane.showMessageDialog(mainFrame,
+                            "Non-existing credentials",
+                            "Failed login",
+                            JOptionPane.WARNING_MESSAGE);
+                }else if (!cardNumber.getText().equals("")) {
+                    user = new LoginController(username.getText(),encodePassword(username.getText(),password.getText()), cardNumber.getText());
+                    if(user.clientMessage().equals("Login as a client!")){
+
+                        clientMainInterface=new ClientMainInterface(user.returnClient());
+
+                        contPanel.add(clientMainInterface.returnPanelMainClinet(),"2");//the main screen for client operations
+
+                        cardLOUT.show(contPanel,"2");
+
+                        clientMainInterface.getLogoutButton().addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                login.add(background);
+                                username.setText("");
+                                password.setText("");
+                                cardNumber.setText("");
+                                cardLOUT.show(contPanel,"1");
+                            }
+                        });
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(mainFrame,
+                                "Invalid username/password/card number!");
+                    }
+                }
+                else if (cardNumber.getText().equals("")){
+                    user = new LoginController(username.getText(), encodePassword(username.getText(),password.getText()));
+                    if (user.managerMessage().equals("Login as a manager!"))
+                    {
+                        managerMainInterface=new ManagerMainInterface(user.returnManager());
+
+                        contPanel.add(managerMainInterface.returnPanelMainManager(),"Main interface for managers");
+
+                        cardLOUT.show(contPanel,"Main interface for managers");
+
+
+
+                        managerMainInterface.getLogoutButton().addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                login.add(background);
+                                username.setText("");
+                                password.setText("");
+                                cardNumber.setText("");
+                                cardLOUT.show(contPanel,"1");
+                            }
+                        });
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(mainFrame,
+                                "Invalid username/password/card number!");
+                    }
+                }
+            }
+        });
 
         //creating the background
         ImageIcon backgroundImage = new ImageIcon("backf.jpg");
