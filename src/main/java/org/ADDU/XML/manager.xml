@@ -1,0 +1,39 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?><Managers>
+    <Manager id="1">
+        <username>denisav</username>
+        <password>F�&#22;Ѝ�&amp;��&#30;�&#29;�&#22;����ϞQ+&#31;�w��&#7;s�+���,䄉��/�Z����&#14;��Xj&#27;�r�&#12;&#18;�[�&#3;</password>
+        <lastName>Avram</lastName>
+        <firstName>Denis</firstName>
+        <cards>
+            <cardNumber>1234</cardNumber>
+            <cardNumber>5678</cardNumber>
+        </cards>
+        <loans>
+            <loan>
+                <desiredAmount>7000</desiredAmount>
+                <usernameClient>cerbu</usernameClient>
+            </loan>
+            <loan>
+                <desiredAmount>3200</desiredAmount>
+                <usernameClient>cerbu</usernameClient>
+            </loan>
+        </loans>
+    </Manager>
+    <Manager id="2">
+        <username>dianaudi</username>
+        <password>�)W�����d�&#25;�X8EJM&#14;��T��ܚ03�֨&#22;)H&#21;���^4���!�&#11;81��Vv���&#6;��z�&#18;�&#13;�</password>
+        <lastName>Udisteanu</lastName>
+        <firstName>Diana</firstName>
+        <cards>
+            <cardNumber>9012</cardNumber>
+            <cardNumber>3456</cardNumber>
+        </cards>
+        <loans>
+            <loan>
+                <desiredAmount>14400</desiredAmount>
+                <usernameClient>cucu</usernameClient>
+            </loan>
+        </loans>
+    </Manager>
+
+</Managers>
