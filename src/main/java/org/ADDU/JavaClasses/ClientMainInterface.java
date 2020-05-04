@@ -58,8 +58,8 @@ public class ClientMainInterface extends JFrame{
         contPanel.setLayout(cardLOUT);
 
         principal = new JPanel();
-        principal.setSize(350,300);
-        principal.setBounds(0,0,750,450);
+        principal.setSize(666,403);
+        principal.setBounds(0,0,666,403);
         principal.setLayout(null);
 
 
@@ -99,7 +99,7 @@ public class ClientMainInterface extends JFrame{
         logoutButton.setBackground(Color.WHITE);
         principal.add(logoutButton);
 
-        ImageIcon backgroundImage = new ImageIcon("backf.jpg");
+        ImageIcon backgroundImage = new ImageIcon("background.jpg");
         background = new JLabel("", backgroundImage,JLabel.CENTER);
         background.setBounds(0, 0, 665, 403);
 

@@ -1,6 +1,6 @@
 package org.ADDU.JavaClasses;
 
-import com.sun.org.glassfish.gmbal.ManagedAttribute;
+
 import org.ADDU.Model.Manager;
 
 import javax.swing.*;
@@ -71,7 +71,7 @@ public class ManagerMainInterface extends JFrame {
         logoutButton.setBackground(Color.WHITE);
         principal.add(logoutButton);
 
-        ImageIcon backgroundImage = new ImageIcon("backf.jpg");
+        ImageIcon backgroundImage = new ImageIcon("background.jpg");
         background = new JLabel("", backgroundImage, JLabel.CENTER);
         background.setBounds(0, 0, 665, 403);
 
