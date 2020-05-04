@@ -81,7 +81,7 @@ public class LoginController {
         try {
             client=new Client();
 
-            File inputFile = new File("src\\main\\java\\org\\ADDU\\XML\\clientFile.xml");
+            File inputFile = new File("src\\main\\resources\\clientFile.xml");
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -164,7 +164,7 @@ public class LoginController {
         Loan loan=new Loan();
         try {
             manager=new Manager();
-            File inputFile = new File("src\\main\\java\\org\\ADDU\\XML\\manager.xml");
+            File inputFile = new File("src\\main\\resources\\manager.xml");
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
