@@ -44,7 +44,7 @@ public class ScriereXML {
 
     public static void main(String[] args){
         try{
-            String filepath = "src\\main\\java\\org\\ADDU\\XML\\clientFile.xml";
+            String filepath = "src\\main\\resources\\clientFile.xml";
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(filepath);
