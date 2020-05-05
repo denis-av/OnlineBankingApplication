@@ -1,6 +1,6 @@
 package org.ADDU.JavaClasses;
 
-import com.sun.org.glassfish.gmbal.ManagedAttribute;
+
 import org.ADDU.Model.Manager;
 
 import javax.swing.*;
