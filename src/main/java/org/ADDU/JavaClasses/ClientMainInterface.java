@@ -21,11 +21,13 @@ public class ClientMainInterface extends JFrame{
     private JButton buttonLoans;
     private JButton logoutButton;
     private ScriereCitireManager theManager=new ScriereCitireManager();
+    private ScriereCitireClient theClient = new ScriereCitireClient();
     JPanel principal;
     JPanel contPanel = new JPanel();
     CardLayout cardLOUT=new CardLayout();
     SeeSoldPage soldPage;
     NewLoanPage newLoanPage;
+    TransferMoneyPage transferPage;
 
     public ClientMainInterface(Client client){
         this.client=client;
@@ -59,6 +61,7 @@ public class ClientMainInterface extends JFrame{
 
         soldPage = new SeeSoldPage(client);
         newLoanPage=new NewLoanPage(client,theManager.returnManager(client.getManagerId()));
+        transferPage = new TransferMoneyPage(client,theClient.returnClient());
         contPanel.setLayout(cardLOUT);
 
         principal = new JPanel();
@@ -113,7 +116,7 @@ public class ClientMainInterface extends JFrame{
         contPanel.add(principal,"2");
         contPanel.add(soldPage.returnPanel(),"soldPage");
         contPanel.add(newLoanPage.returnPanel(),"newLoanPage");
-
+        contPanel.add(transferPage.returnPanel(),"transferMoney");
 
         buttonSold.addActionListener(new ActionListener() {
             @Override
@@ -137,6 +140,21 @@ public class ClientMainInterface extends JFrame{
         });
 
         newLoanPage.getButtonBack().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLOUT.show(contPanel,"2");
+            }
+        });
+
+        buttonTransfer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLOUT.show(contPanel,"transferMoney");
+            }
+        });
+
+
+        transferPage.getButtonBack().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLOUT.show(contPanel,"2");
