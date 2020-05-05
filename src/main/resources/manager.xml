@@ -17,7 +17,7 @@
                 <desiredAmount>3200</desiredAmount>
                 <usernameClient>cerbu</usernameClient>
             </loan>
-        </loans>
+        <loan><desiredAmount>1200</desiredAmount><usernameClient>sebi99</usernameClient></loan></loans>
     </Manager>
     <Manager id="2">
         <username>dianaudi</username>

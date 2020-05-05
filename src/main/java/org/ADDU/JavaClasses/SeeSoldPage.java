@@ -75,13 +75,13 @@ public class SeeSoldPage extends JFrame {
         soldEuro.setEditable(false); //read-only
         principal.add(soldEuro);
 
-        buttonBack=new JButton("Back!");
+        buttonBack=new JButton("Back");
         buttonBack.setFont(fondText);
         buttonBack.setBounds(410,260,100,28);
         principal.add(buttonBack);
 
 
-        ImageIcon backgroundImage = new ImageIcon("backf.jpg");
+        ImageIcon backgroundImage = new ImageIcon("background.jpg");
         background = new JLabel("", backgroundImage,JLabel.CENTER);
         background.setBounds(0, 0, 665, 403);
 

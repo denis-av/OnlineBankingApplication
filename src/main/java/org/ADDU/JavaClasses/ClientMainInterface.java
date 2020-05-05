@@ -2,6 +2,7 @@ package org.ADDU.JavaClasses;
 
 
 import org.ADDU.Model.Client;
+import org.ADDU.Model.Manager;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicBorders;
@@ -19,10 +20,12 @@ public class ClientMainInterface extends JFrame{
     private JButton buttonRequest;
     private JButton buttonLoans;
     private JButton logoutButton;
+    private ScriereCitireManager theManager=new ScriereCitireManager();
     JPanel principal;
     JPanel contPanel = new JPanel();
     CardLayout cardLOUT=new CardLayout();
     SeeSoldPage soldPage;
+    NewLoanPage newLoanPage;
 
     public ClientMainInterface(Client client){
         this.client=client;
@@ -55,11 +58,12 @@ public class ClientMainInterface extends JFrame{
     public JPanel returnPanelMainClinet(){
 
         soldPage = new SeeSoldPage(client);
+        newLoanPage=new NewLoanPage(client,theManager.returnManager(client.getManagerId()));
         contPanel.setLayout(cardLOUT);
 
         principal = new JPanel();
-        principal.setSize(350,300);
-        principal.setBounds(0,0,750,450);
+        principal.setSize(666,403);
+        principal.setBounds(0,0,666,403);
         principal.setLayout(null);
 
 
@@ -99,7 +103,7 @@ public class ClientMainInterface extends JFrame{
         logoutButton.setBackground(Color.WHITE);
         principal.add(logoutButton);
 
-        ImageIcon backgroundImage = new ImageIcon("backf.jpg");
+        ImageIcon backgroundImage = new ImageIcon("background.jpg");
         background = new JLabel("", backgroundImage,JLabel.CENTER);
         background.setBounds(0, 0, 665, 403);
 
@@ -108,6 +112,7 @@ public class ClientMainInterface extends JFrame{
         contPanel.setBounds(0,0,665,403);
         contPanel.add(principal,"2");
         contPanel.add(soldPage.returnPanel(),"soldPage");
+        contPanel.add(newLoanPage.returnPanel(),"newLoanPage");
 
 
         buttonSold.addActionListener(new ActionListener() {
@@ -118,6 +123,20 @@ public class ClientMainInterface extends JFrame{
         });
 
         soldPage.getButtonBack().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLOUT.show(contPanel,"2");
+            }
+        });
+
+        buttonRequest.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLOUT.show(contPanel,"newLoanPage");
+            }
+        });
+
+        newLoanPage.getButtonBack().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLOUT.show(contPanel,"2");

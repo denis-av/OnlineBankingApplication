@@ -91,7 +91,7 @@ public class OnlineBankingApplication extends JFrame{
         login.setSize(350, 450);
         login.setLayout(null);
         login.setBackground(new Color(0, 0, 0, 0));
-        login.setBounds(0, 0, 750, 450);
+        login.setBounds(0, 0, 666, 403);
 
         screenUsername = new JLabel("Enter your username!*");
         screenUsername.setBounds(380, 73, 200, 30);
@@ -123,7 +123,7 @@ public class OnlineBankingApplication extends JFrame{
         cardNumber.setBounds(380, 240, 200, 30);
         login.add(cardNumber);
 
-        loginButton = new JButton("Login!");
+        loginButton = new JButton("Login");
         loginButton.setSize(100, 20);
         loginButton.setBounds(430, 290, 100, 25);
         loginButton.setFont(fondText);
@@ -199,7 +199,7 @@ public class OnlineBankingApplication extends JFrame{
         });
 
         //creating the background
-        ImageIcon backgroundImage = new ImageIcon("backf.jpg");
+        ImageIcon backgroundImage = new ImageIcon("background.jpg");
         background = new JLabel("", backgroundImage, JLabel.CENTER);
         background.setBounds(0, 0, 665, 403);
 
