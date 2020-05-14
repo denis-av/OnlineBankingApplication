@@ -1,5 +1,7 @@
 package org.ADDU.JavaClasses;
 
+import org.ADDU.Exceptions.CouldNotFindBeneficiar;
+import org.ADDU.Exceptions.CouldNotFindClient;
 import org.ADDU.Model.Client;
 import org.ADDU.Model.Manager;
 
@@ -39,6 +41,13 @@ public class TransferMoneyPage extends JFrame{
 
     public JButton getButtonSend(){
         return send;
+    }
+
+    public Client theBeneficiar(){
+        for(int i=0; i<client2.size(); i++){
+            if(t1.getText().equals(client2.get(i).getIban())) return client2.get(i);
+        }
+        throw new CouldNotFindBeneficiar();
     }
 
     public JPanel returnPanel() {
@@ -84,24 +93,26 @@ public class TransferMoneyPage extends JFrame{
         buttonBack.setBounds(470,255,80,28);
         principal.add(buttonBack);
 
+
         send.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int sumaClient, sumaBeneficiar;
-                for(int i=0; i<client2.size(); i++){
-                    if(t1.getText().equals(client2.get(i).getIban())) beneficiar = client2.get(i);
+                try{
+                        int sumaClient, sumaBeneficiar;
+                        beneficiar=theBeneficiar();
+                        sumaClient = (Integer.parseInt(client1.getSold()) - Integer.parseInt(desiredAmount.getText()));
+                        sumaBeneficiar = (Integer.parseInt(beneficiar.getSold()) + Integer.parseInt(desiredAmount.getText()));
+                        scriereCitireClient.scriereClient(String.valueOf(sumaClient),client1);
+                        scriereCitireClient.scriereClient(String.valueOf(sumaBeneficiar),beneficiar);
+                        t1.setText("");
+                        desiredAmount.setText("");
+                }catch (RuntimeException exp){
+                    throw new CouldNotFindBeneficiar();
                 }
-
-                sumaClient = (Integer.parseInt(client1.getSold()) - Integer.parseInt(desiredAmount.getText()));
-                sumaBeneficiar = (Integer.parseInt(beneficiar.getSold()) + Integer.parseInt(desiredAmount.getText()));
-                scriereCitireClient.scriereClient(String.valueOf(sumaClient),client1);
-               scriereCitireClient.scriereClient(String.valueOf(sumaBeneficiar),beneficiar);
-               t1.setText("");
-               desiredAmount.setText("");
             }
         });
 
-        ImageIcon backgroundImage = new ImageIcon("background.jpg");
+        ImageIcon backgroundImage = new ImageIcon("src\\main\\resources\\background.jpg");
         background = new JLabel("", backgroundImage,JLabel.CENTER);
         background.setBounds(0, 0, 665, 403);
 

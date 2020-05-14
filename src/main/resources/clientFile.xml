@@ -7,26 +7,26 @@ s���A{��&#23;Y�-&#21;拋f��</password>
         <firstName>Sebastian</firstName>
         <lastName>Sofran</lastName>
         <iban>RO43231IBAN342</iban>
-        <sold>15000</sold>
+        <sold>13750</sold>
         <managerID>1</managerID>
         <loans>
             <loan>
                 <desiredAmount>3500</desiredAmount>
                 <status>Accepted</status>
                 <message>20.09.2019 - deadline</message>
-                <usernameClient>cerbu</usernameClient>
+                <usernameClient>sebi99</usernameClient>
             </loan>
             <loan>
                 <desiredAmount>2000</desiredAmount>
                 <status>Rejected</status>
                 <message>You already have a loan!</message>
-                <usernameClient>cerbu</usernameClient>
+                <usernameClient>sebi99</usernameClient>
             </loan>
             <loan>
                 <desiredAmount>3610</desiredAmount>
                 <status>Accepted</status>
                 <message>6.12.2023 - deadline</message>
-                <usernameClient>cerbu</usernameClient>
+                <usernameClient>sebi99</usernameClient>
             </loan>
         </loans>
     </client>
@@ -70,7 +70,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
         <firstName>Diana</firstName>
         <lastName>Bucu</lastName>
         <iban>RO13456IBAN356</iban>
-        <sold>8900</sold>
+        <sold>10150</sold>
         <managerID>2</managerID>
         <loans>
             <loan>

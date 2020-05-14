@@ -22,12 +22,12 @@ public class ClientMainInterface extends JFrame{
     private JButton logoutButton;
     private ScriereCitireManager theManager=new ScriereCitireManager();
     private ScriereCitireClient theClient = new ScriereCitireClient();
-    JPanel principal;
-    JPanel contPanel = new JPanel();
-    CardLayout cardLOUT=new CardLayout();
-    SeeSoldPage soldPage;
-    NewLoanPage newLoanPage;
-    TransferMoneyPage transferPage;
+    private JPanel principal;
+    private JPanel contPanel = new JPanel();
+    private CardLayout cardLOUT=new CardLayout();
+    private SeeSoldPage soldPage;
+    private NewLoanPage newLoanPage;
+    private TransferMoneyPage transferPage;
 
     public ClientMainInterface(Client client){
         this.client=client;
@@ -106,7 +106,7 @@ public class ClientMainInterface extends JFrame{
         logoutButton.setBackground(Color.WHITE);
         principal.add(logoutButton);
 
-        ImageIcon backgroundImage = new ImageIcon("background.jpg");
+        ImageIcon backgroundImage = new ImageIcon("src\\main\\resources\\background.jpg");
         background = new JLabel("", backgroundImage,JLabel.CENTER);
         background.setBounds(0, 0, 665, 403);
 

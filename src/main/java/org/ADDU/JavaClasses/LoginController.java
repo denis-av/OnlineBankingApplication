@@ -5,6 +5,8 @@ import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.ADDU.Exceptions.CouldNotFindClient;
+import org.ADDU.Exceptions.CouldNotFindManager;
 import org.ADDU.Model.Client;
 import org.ADDU.Model.Manager;
 import org.w3c.dom.Document;
@@ -41,15 +43,11 @@ public class LoginController {
         test =this.parseManagerXML(this.username,this.password);
     }
 
-    public String managerMessage(){
-        if(test.getId()>=1) return "Login as a manager!";
-        else return "Invalid credentials!";
-    }
 
-    public Manager returnManager(){
-        return test;
+    public Manager returnManager() throws CouldNotFindManager{
+        if(test.getUsername()!=null) return test;
+        else throw new CouldNotFindManager();
     }
-
 
     public LoginController(String username, String password, String cardNumber){
         this.username = username;
@@ -59,13 +57,10 @@ public class LoginController {
         testClient=this.parseClientXML(this.username,this.password,this.cardNumber);
     }
 
-    public String clientMessage(){
-        if(testClient.getCardNumber()!=null) return "Login as a client!";
-        else return "Invalid credentials!";
-    }
 
-    public Client returnClient(){
-        return testClient;
+    public Client returnClient() throws CouldNotFindClient {
+        if(testClient.getUsername()!=null) return testClient;
+        else throw new CouldNotFindClient();
     }
 
     public Client parseClientXML(String username,String password,String cardNumber){
@@ -264,13 +259,4 @@ public class LoginController {
         }
         return md;
     }
-
-    /*
-    public static void main(String[] args){
-        //LoginController test =new  LoginController("cerbu",encodePassword("cerbu","esteban"),"1234");
-        //LoginController test2=new  LoginController("denisav",encodePassword("denisav","cevrei"));
-        //Manager manag = test2.returnManager();
-        //Client clnt=test.returnClient();
-        //System.out.println(manag.toString());
-    }*/
 }
