@@ -1,5 +1,7 @@
 package org.ADDU.JavaClasses;
 
+import org.ADDU.Exceptions.CouldNotFindManager;
+import org.ADDU.Exceptions.CouldNotFindYourManager;
 import org.ADDU.Model.Client;
 import org.ADDU.Model.Manager;
 
@@ -15,9 +17,9 @@ public class NewLoanPage extends JFrame{
     private Client client=new Client();
     private Manager manager=new Manager();
     private JLabel background;
-    JPanel principal;
-    JPanel contPanel = new JPanel();
-    CardLayout cardLOUT=new CardLayout();
+    private JPanel principal;
+    private JPanel contPanel = new JPanel();
+    private CardLayout cardLOUT=new CardLayout();
     private ScriereCitireManager scriereCitireManager=new ScriereCitireManager();
     private Font fondText=new Font("Calibri Light (Headings)", Font.BOLD,13);
     private JButton buttonBack;
@@ -25,6 +27,11 @@ public class NewLoanPage extends JFrame{
     public NewLoanPage(Client client,Manager manager){
         this.client=client;
         this.manager=manager;
+    }
+
+    public Manager theManager(){
+        if(manager.getUsername()!=null) return manager;
+        else throw new CouldNotFindYourManager();
     }
 
     public JButton getButtonBack() {
@@ -68,12 +75,17 @@ public class NewLoanPage extends JFrame{
         sendAmount.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                scriereCitireManager.scriereManager(desiredAmount.getText(),client,manager);
-                desiredAmount.setText("");
+                try{
+                    scriereCitireManager.scriereManager(desiredAmount.getText(),client,theManager());
+                    desiredAmount.setText("");
+                }catch (RuntimeException exp){
+                    throw new CouldNotFindYourManager();
+                }
+
             }
         });
 
-        ImageIcon backgroundImage = new ImageIcon("background.jpg");
+        ImageIcon backgroundImage = new ImageIcon("src\\main\\resources\\background.jpg");
         background = new JLabel("", backgroundImage,JLabel.CENTER);
         background.setBounds(0, 0, 665, 403);
 
