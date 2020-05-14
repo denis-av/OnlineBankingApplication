@@ -16,9 +16,9 @@ public class ManagerMainInterface extends JFrame {
     private JLabel background;
     private JButton buttonRequest;
     private JButton logoutButton;
-    JPanel principal;
-    JPanel contPanel = new JPanel();
-    CardLayout cardLOUT = new CardLayout();
+    private JPanel principal;
+    private JPanel contPanel = new JPanel();
+    private CardLayout cardLOUT = new CardLayout();
 
     public ManagerMainInterface(Manager manager) {
         this.manager = manager;
@@ -71,7 +71,7 @@ public class ManagerMainInterface extends JFrame {
         logoutButton.setBackground(Color.WHITE);
         principal.add(logoutButton);
 
-        ImageIcon backgroundImage = new ImageIcon("background.jpg");
+        ImageIcon backgroundImage = new ImageIcon("src\\main\\resources\\background.jpg");
         background = new JLabel("", backgroundImage, JLabel.CENTER);
         background.setBounds(0, 0, 665, 403);
 
