@@ -11,11 +11,15 @@
         <loans>
             <loan>
                 <desiredAmount>7000</desiredAmount>
-                <usernameClient>cerbu</usernameClient>
+                <usernameClient>sebi99</usernameClient>
             </loan>
             <loan>
                 <desiredAmount>3200</desiredAmount>
-                <usernameClient>cerbu</usernameClient>
+                <usernameClient>sebi99</usernameClient>
+            </loan>
+            <loan>
+                <desiredAmount>1150</desiredAmount>
+                <usernameClient>belegea</usernameClient>
             </loan>
         <loan><desiredAmount>1200</desiredAmount><usernameClient>sebi99</usernameClient></loan></loans>
     </Manager>
@@ -32,6 +36,14 @@
             <loan>
                 <desiredAmount>14400</desiredAmount>
                 <usernameClient>cucu</usernameClient>
+            </loan>
+            <loan>
+                <desiredAmount>9400</desiredAmount>
+                <usernameClient>cucu</usernameClient>
+            </loan>
+            <loan>
+                <desiredAmount>1700</desiredAmount>
+                <usernameClient>vic</usernameClient>
             </loan>
         </loans>
     </Manager>
