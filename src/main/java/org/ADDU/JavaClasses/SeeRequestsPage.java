@@ -85,7 +85,7 @@ public class SeeRequestsPage extends JFrame{
 
         principal.add(sp,CENTER_ALIGNMENT);
 
-        ImageIcon backgroundImage = new ImageIcon("C:\\Users\\Diana Udisteanu\\Desktop\\ProiectFis\\OnlineBankingApplication\\src\\main\\resources\\myloansback.jpg");
+        ImageIcon backgroundImage = new ImageIcon("src\\main\\resources\\myloansback.jpg");
         background = new JLabel("", backgroundImage,JLabel.CENTER);
         background.setBounds(0, 0, 665, 403);
 
