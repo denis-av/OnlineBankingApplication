@@ -6,6 +6,7 @@ import org.ADDU.Model.Manager;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
@@ -56,6 +57,9 @@ public class SeeRequestsPage extends JFrame{
         model.addColumn("Message");
         JTable table = new JTable(model);
         table.setRowHeight(25);
+        table.setFont(fondText);
+        JTableHeader tab=table.getTableHeader();
+        tab.setFont(fondText);
         table.setBackground(Color.WHITE);
         table.setForeground(Color.BLACK);
 

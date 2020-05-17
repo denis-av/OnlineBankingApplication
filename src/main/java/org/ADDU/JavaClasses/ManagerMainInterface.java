@@ -29,6 +29,7 @@ public class ManagerMainInterface extends JFrame {
     public ArrayList<Client> myClient=new ArrayList<Client>();
     private ScriereCitireClient theClient = new ScriereCitireClient();
     private ArrayList<Client> allClients=theClient.returnClient();
+    private SEERequests myRequests;
 
     public ManagerMainInterface(Manager manager) {
         this.manager = manager;
@@ -69,6 +70,7 @@ public class ManagerMainInterface extends JFrame {
     public JPanel returnPanelMainManager() {
         contPanel.setLayout(cardLOUT);
         MYCLIENTS=new SeeMyClients(manager,myClient);
+        myRequests=new SEERequests(manager);
 
         principal = new JPanel();
         principal.setSize(350, 300);
@@ -107,6 +109,7 @@ public class ManagerMainInterface extends JFrame {
         contPanel.setBounds(0, 0, 665, 403);
         contPanel.add(principal, "Main interface for managers");
         contPanel.add(MYCLIENTS.returnPanel(),"SeeMyClients");
+        contPanel.add(myRequests.returnPanel(),"SeeRequests");
 
         buttonClients.addActionListener(new ActionListener() {
             @Override
@@ -116,6 +119,20 @@ public class ManagerMainInterface extends JFrame {
         });
 
         MYCLIENTS.getButtonBack().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLOUT.show(contPanel,"Main interface for managers");
+            }
+        });
+
+        buttonLoans.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLOUT.show(contPanel,"SeeRequests");
+            }
+        });
+
+        myRequests.getButtonBack().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLOUT.show(contPanel,"Main interface for managers");

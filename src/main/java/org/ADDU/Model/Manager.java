@@ -63,6 +63,14 @@ public class Manager {
         this.id = id;
     }
 
+    public ArrayList<Loan> getLoans() {
+        return loans;
+    }
+
+    public void setLoans(ArrayList<Loan> loans) {
+        this.loans = loans;
+    }
+
     @Override
     public String toString() {
         return "Manager{" +
