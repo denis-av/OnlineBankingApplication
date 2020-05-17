@@ -15,6 +15,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.ADDU.Exceptions.CouldNotFindClient;
 import org.ADDU.Model.Client;
 import org.ADDU.Model.Manager;
 import org.w3c.dom.Document;
@@ -144,6 +145,63 @@ public class ScriereCitireClient {
 
                 }
 
+        }catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (SAXException sae) {
+            sae.printStackTrace();
+        }
+    }
+
+    public void scriereClient(String amount, String username,String statuss,String Message){
+        int ok=0;
+        try{
+            String filepath = "src\\main\\resources\\clientFile.xml";
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.parse(filepath);
+
+            Node Client = doc.getFirstChild();
+
+            for(int j=0; j<doc.getElementsByTagName("client").getLength() ;j++) {
+                Node client = doc.getElementsByTagName("client").item(j);
+                NodeList list = client.getChildNodes();
+                Node usr=list.item(1);
+
+                for (int i = 0; i < list.getLength(); i++) {
+
+                    Node node = list.item(i);
+
+                    if ("loans".equals(node.getNodeName()) && username.equals(usr.getTextContent())) {
+                        Element loan=doc.createElement("loan");
+                        Element desiredAmount=doc.createElement("desiredAmount");
+                        desiredAmount.appendChild(doc.createTextNode(amount));
+                        Element status=doc.createElement("status");
+                        status.appendChild(doc.createTextNode(statuss));
+                        Element message=doc.createElement("message");
+                        message.appendChild(doc.createTextNode(Message));
+                        Element usernameClient=doc.createElement("usernameClient");
+                        usernameClient.appendChild(doc.createTextNode(username));
+                        loan.appendChild(desiredAmount);
+                        loan.appendChild(status);
+                        loan.appendChild(message);
+                        loan.appendChild(usernameClient);
+                        node.appendChild(loan);ok=1;
+                    }
+
+                }
+
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                DOMSource source = new DOMSource(doc);
+                StreamResult result = new StreamResult(new File(filepath));
+                transformer.transform(source, result);
+
+            }
+            if(ok==0) throw new CouldNotFindClient();
         }catch (ParserConfigurationException pce) {
             pce.printStackTrace();
         } catch (TransformerException tfe) {
