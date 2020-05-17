@@ -28,7 +28,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
                 <message>6.12.2023 - deadline</message>
                 <usernameClient>sebi99</usernameClient>
             </loan>
-        </loans>
+        <loan><desiredAmount>1200</desiredAmount><status>Rejected</status><message>Noooo</message><usernameClient>sebi99</usernameClient></loan></loans>
     </client>
     <client cardNumber="5678">
         <username>belegea</username>
@@ -91,6 +91,6 @@ s���A{��&#23;Y�-&#21;拋f��</password>
                 <message>01.12.2020 - deadline</message>
                 <usernameClient>cucu</usernameClient>
             </loan>
-        </loans>
+        <loan><desiredAmount>9400</desiredAmount><status>Accepted</status><message>It's ok!</message><usernameClient>cucu</usernameClient></loan></loans>
     </client>
 </file>
