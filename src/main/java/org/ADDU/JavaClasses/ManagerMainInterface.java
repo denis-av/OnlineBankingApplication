@@ -1,6 +1,8 @@
 package org.ADDU.JavaClasses;
 
 
+import org.ADDU.Exceptions.CouldNotFindClient;
+import org.ADDU.Model.Client;
 import org.ADDU.Model.Manager;
 
 import javax.swing.*;
@@ -8,6 +10,10 @@ import javax.swing.plaf.basic.BasicBorders;
 import javax.swing.plaf.metal.MetalBorders;
 import java.awt.*;
 import java.awt.event.*;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 public class ManagerMainInterface extends JFrame {
     private JButton buttonClients;
@@ -19,9 +25,14 @@ public class ManagerMainInterface extends JFrame {
     private JPanel principal;
     private JPanel contPanel = new JPanel();
     private CardLayout cardLOUT = new CardLayout();
+    private SeeMyClients MYCLIENTS;
+    public ArrayList<Client> myClient=new ArrayList<Client>();
+    private ScriereCitireClient theClient = new ScriereCitireClient();
+    private ArrayList<Client> allClients=theClient.returnClient();
 
     public ManagerMainInterface(Manager manager) {
         this.manager = manager;
+        addMyClients();
     }
 
     public void setManager(Manager manager) {
@@ -40,8 +51,24 @@ public class ManagerMainInterface extends JFrame {
         return logoutButton;
     }
 
+    public void addAClient(String cardNumber){
+        int find=0;
+        for(int i=0;i<allClients.size();i++)
+            if(allClients.get(i).getCardNumber().equals(cardNumber)) {
+                find = 1;
+                myClient.add(allClients.get(i));
+            }
+        if (find==0) throw new CouldNotFindClient();
+    }
+
+    public void addMyClients(){
+        for(int i=0;i<manager.getCards().size();i++)
+            addAClient(manager.getCards().get(i));
+    }
+
     public JPanel returnPanelMainManager() {
         contPanel.setLayout(cardLOUT);
+        MYCLIENTS=new SeeMyClients(manager,myClient);
 
         principal = new JPanel();
         principal.setSize(350, 300);
@@ -79,6 +106,21 @@ public class ManagerMainInterface extends JFrame {
 
         contPanel.setBounds(0, 0, 665, 403);
         contPanel.add(principal, "Main interface for managers");
+        contPanel.add(MYCLIENTS.returnPanel(),"SeeMyClients");
+
+        buttonClients.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLOUT.show(contPanel,"SeeMyClients");
+            }
+        });
+
+        MYCLIENTS.getButtonBack().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLOUT.show(contPanel,"Main interface for managers");
+            }
+        });
 
         return contPanel;
     }
