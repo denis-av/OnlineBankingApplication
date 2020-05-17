@@ -105,6 +105,81 @@ public class SEERequests extends JFrame {
         background.setBounds(0, 0, 665, 403);
 
         principal.add(background);
+
+        manageLoans.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel pan=new JPanel();
+                pan.setLayout(null);
+
+                JLabel t1=new JLabel("Username");
+                t1.setBounds(75,10,190,28);
+                t11=new JTextField();
+                t11.setBounds(75,38,190,28);
+
+                JLabel t2=new JLabel("Desired Amount");
+                t2.setBounds(75,66,190,28);
+                t22=new JTextField();
+                t22.setBounds(75,94,190,28);
+
+                JLabel t3=new JLabel("Status");
+                t3.setBounds(75,122,190,28);
+                t33=new JTextField();
+                t33.setBounds(75,150,190,28);
+
+                JLabel t4=new JLabel("Message");
+                t4.setBounds(75,178,190,28);
+                t44=new JTextField();
+                t44.setBounds(75,206,190,28);
+
+                send.setBounds(85,255,75,28);
+                send.setFont(fondText);
+                send.setBackground(Color.WHITE);
+                pan.add(send);
+
+                cancel.setBounds(170,255,85,28);
+                cancel.setFont(fondText);
+                cancel.setBackground(Color.WHITE);
+                pan.add(cancel);
+
+                pan.add(t1);
+                pan.add(t11);
+
+                pan.add(t2);
+                pan.add(t22);
+
+                pan.add(t3);
+                pan.add(t33);
+
+                pan.add(t4);
+                pan.add(t44);
+
+                dialog.add(pan);
+
+                dialog.setSize(350, 370);
+                dialog.setLocationRelativeTo(null);
+                dialog.setVisible(true);
+
+            }
+        });
+
+
+        send.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(int indexRow=0;indexRow<table.getRowCount();indexRow++)
+                    if(t11.getText().equals(model.getValueAt(indexRow,0)) && t22.getText().equals(model.getValueAt(indexRow,1)))
+                        model.setValueAt(t33.getText(),indexRow,2);
+                scr.stergereLoanManager(manager,t11.getText(),t22.getText());
+                scrc.scriereClient(t22.getText(),t11.getText(),t33.getText(),t44.getText());
+                JOptionPane.showMessageDialog(dialog, "Your decision was sent!");
+                t11.setText("");
+                t22.setText("");
+                t33.setText("");
+                t44.setText("");
+            }
+        });
+
         return principal;
     }
 }
