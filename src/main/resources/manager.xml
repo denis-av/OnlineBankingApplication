@@ -21,7 +21,7 @@
                 <desiredAmount>1150</desiredAmount>
                 <usernameClient>belegea</usernameClient>
             </loan>
-        <loan><desiredAmount>1200</desiredAmount><usernameClient>sebi99</usernameClient></loan></loans>
+        </loans>
     </Manager>
     <Manager id="2">
         <username>dianaudi</username>
@@ -37,10 +37,7 @@
                 <desiredAmount>14400</desiredAmount>
                 <usernameClient>cucu</usernameClient>
             </loan>
-            <loan>
-                <desiredAmount>9400</desiredAmount>
-                <usernameClient>cucu</usernameClient>
-            </loan>
+            
             <loan>
                 <desiredAmount>1700</desiredAmount>
                 <usernameClient>vic</usernameClient>
