@@ -45,6 +45,12 @@ s���A{��&#23;Y�-&#21;拋f��</password>
                 <message>15.07.2020 - deadline</message>
                 <usernameClient>belegea</usernameClient>
             </loan>
+            <loan>
+                <desiredAmount>19000</desiredAmount>
+                <status>Rejected</status>
+                <message>It's not ok!</message>
+                <usernameClient>belegea</usernameClient>
+            </loan>
         </loans>
     </client>
     <client cardNumber="9012">
