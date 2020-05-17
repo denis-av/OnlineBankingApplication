@@ -28,6 +28,7 @@ public class ClientMainInterface extends JFrame{
     private SeeSoldPage soldPage;
     private NewLoanPage newLoanPage;
     private TransferMoneyPage transferPage;
+    private SeeRequestsPage rqPage;
 
     public ClientMainInterface(Client client){
         this.client=client;
@@ -62,6 +63,7 @@ public class ClientMainInterface extends JFrame{
         soldPage = new SeeSoldPage(client);
         newLoanPage=new NewLoanPage(client,theManager.returnManager(client.getManagerId()));
         transferPage = new TransferMoneyPage(client,theClient.returnClient());
+        rqPage = new SeeRequestsPage(client);
         contPanel.setLayout(cardLOUT);
 
         principal = new JPanel();
@@ -117,6 +119,7 @@ public class ClientMainInterface extends JFrame{
         contPanel.add(soldPage.returnPanel(),"soldPage");
         contPanel.add(newLoanPage.returnPanel(),"newLoanPage");
         contPanel.add(transferPage.returnPanel(),"transferMoney");
+        contPanel.add(rqPage.returnPanel(),"seeRequests");
 
         buttonSold.addActionListener(new ActionListener() {
             @Override
@@ -153,8 +156,21 @@ public class ClientMainInterface extends JFrame{
             }
         });
 
-
         transferPage.getButtonBack().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLOUT.show(contPanel,"2");
+            }
+        });
+
+        buttonLoans.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLOUT.show(contPanel,"seeRequests");
+            }
+        });
+
+        rqPage.getButtonBack().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLOUT.show(contPanel,"2");

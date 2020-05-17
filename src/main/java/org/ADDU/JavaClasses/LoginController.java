@@ -136,7 +136,7 @@ public class LoginController {
                                 }
                                 if ("usernameClient".equals(test.getNodeName())) {
                                     loan.setUsernameClient(test.getTextContent());
-                                    client.addLoan(loan);
+                                    if(client.getUsername().equals(username))client.addLoan(loan);
                                     loan = new Loan();
                                 }
                             }
@@ -198,7 +198,7 @@ public class LoginController {
                         for (int p = 0; p < cards.getLength(); p++){
                             Node test=cards.item(p);
                             if("cardNumber".equals(test.getNodeName())){
-                                manager.addCard(test.getTextContent());
+                                if(manager.getUsername().equals(username))manager.addCard(test.getTextContent());
                             }
                         }
                     }
@@ -220,7 +220,7 @@ public class LoginController {
                                 }
                                 if ("usernameClient".equals(test.getNodeName())) {
                                     loan.setUsernameClient(test.getTextContent());
-                                    manager.addLoan(loan);
+                                    if(manager.getUsername().equals(username))manager.addLoan(loan);
                                     loan = new Loan();
                                 }
                             }

@@ -76,13 +76,13 @@ s���A{��&#23;Y�-&#21;拋f��</password>
             <loan>
                 <desiredAmount>8100</desiredAmount>
                 <status>Rejected</status>
-                <message>Yor desired amount is too bigger</message>
+                <message>The amount is too big</message>
                 <usernameClient>cucu</usernameClient>
             </loan>
             <loan>
                 <desiredAmount>3750</desiredAmount>
                 <status>Accepted</status>
-                <message>01.12.2020 - dedline</message>
+                <message>01.12.2020 - deadline</message>
                 <usernameClient>cucu</usernameClient>
             </loan>
         </loans>
