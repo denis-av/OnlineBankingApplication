@@ -30,6 +30,7 @@ public class ScriereCitireManager {
     public Manager returnManager(String MANAGERID){
         Manager items = new Manager();
         Manager manager = null;
+        String id="1";
         Loan loan=new Loan();
         try {
             manager=new Manager();
@@ -67,11 +68,11 @@ public class ScriereCitireManager {
                     if ("lastName".equals(node.getNodeName())) {
                         manager.setLastName(node.getTextContent());
                     }
-                    if ("cards".equals(node.getNodeName())) {
+                    if("cards".equals(node.getNodeName())){
                         NodeList cards = node.getChildNodes();
-                        for (int p = 0; p < cards.getLength(); p++) {
-                            Node test = cards.item(p);
-                            if ("cardNumber".equals(test.getNodeName())) {
+                        for (int p = 0; p < cards.getLength(); p++){
+                            Node test=cards.item(p);
+                            if("cardNumber".equals(test.getNodeName())){
                                 manager.addCard(test.getTextContent());
                             }
                         }
@@ -81,7 +82,7 @@ public class ScriereCitireManager {
                         for (int k = 0; k < loans.getLength(); k++) {
                             NodeList loans2 = loans.item(k).getChildNodes();
                             for (int p = 0; p < loans2.getLength(); p++) {
-                                Node test = loans2.item(p);
+                                Node test=loans2.item(p);
 
                                 if ("desiredAmount".equals(test.getNodeName())) {
                                     loan.setDesiredAmount(test.getTextContent());
@@ -100,10 +101,9 @@ public class ScriereCitireManager {
                             }
                         }
                     }
-                    if (manager.getId() == (Integer.parseInt(MANAGERID)-1)){
-                        items = manager;
-                        manager = new Manager();
-                    }
+                }
+                if (manager.getId()==(Integer.parseInt(MANAGERID))) {
+                    items=manager;manager=new Manager();
                 }
             }
         } catch (Exception e) {
@@ -122,8 +122,8 @@ public class ScriereCitireManager {
             Node Client = doc.getFirstChild();
 
 
-            Node manager = doc.getElementsByTagName("Manager").item(managerClient.getId());
-            Node loans = doc.getElementsByTagName("loans").item(managerClient.getId());
+            Node manager = doc.getElementsByTagName("Manager").item(managerClient.getId()-1);
+            Node loans = doc.getElementsByTagName("loans").item(managerClient.getId()-1);
 
 
             NodeList list = manager.getChildNodes();
