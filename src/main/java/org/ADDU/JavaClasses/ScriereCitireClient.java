@@ -114,6 +114,7 @@ public class ScriereCitireClient {
         return array;
     }
 
+
     public void scriereClient(String amount, Client client1){
         try{
             String filepath = "src\\main\\resources\\clientFile.xml";
