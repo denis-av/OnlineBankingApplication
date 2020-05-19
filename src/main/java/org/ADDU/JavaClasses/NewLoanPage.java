@@ -34,6 +34,18 @@ public class NewLoanPage extends JFrame{
         else throw new CouldNotFindYourManager();
     }
 
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            int d = Integer.parseInt(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
     public JButton getButtonBack() {
         return buttonBack;
     }
@@ -76,7 +88,11 @@ public class NewLoanPage extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    scriereCitireManager.scriereManager(desiredAmount.getText(),client,theManager());
+                   if(isNumeric(desiredAmount.getText())){
+                       scriereCitireManager.scriereManager(desiredAmount.getText(),client,theManager());
+                       JOptionPane.showMessageDialog(principal, "Request sent!");
+                   }
+                   else JOptionPane.showMessageDialog(principal, "You must introduce a number!");
                     desiredAmount.setText("");
                 }catch (RuntimeException exp){
                     throw new CouldNotFindYourManager();

@@ -37,6 +37,18 @@ public class SEERequests extends JFrame {
         this.manager=manager;
     }
 
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            int d = Integer.parseInt(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
     public JButton getButtonBack() {
         return buttonBack;
     }
@@ -167,12 +179,16 @@ public class SEERequests extends JFrame {
         send.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for(int indexRow=0;indexRow<table.getRowCount();indexRow++)
-                    if(t11.getText().equals(model.getValueAt(indexRow,0)) && t22.getText().equals(model.getValueAt(indexRow,1)))
-                        model.setValueAt(t33.getText(),indexRow,2);
-                scr.stergereLoanManager(manager,t11.getText(),t22.getText());
-                scrc.scriereClient(t22.getText(),t11.getText(),t33.getText(),t44.getText());
-                JOptionPane.showMessageDialog(dialog, "Your decision was sent!");
+                if(isNumeric(t22.getText()))
+                    {
+                        for(int indexRow=0;indexRow<table.getRowCount();indexRow++)
+                            if(t11.getText().equals(model.getValueAt(indexRow,0)) && t22.getText().equals(model.getValueAt(indexRow,1)))
+                                model.setValueAt(t33.getText(),indexRow,2);
+                        scr.stergereLoanManager(manager,t11.getText(),t22.getText());
+                        scrc.scriereClient(t22.getText(),t11.getText(),t33.getText(),t44.getText());
+                        JOptionPane.showMessageDialog(dialog, "Your decision was sent!");
+                    }
+                else JOptionPane.showMessageDialog(principal, "You must introduce a number!");
                 t11.setText("");
                 t22.setText("");
                 t33.setText("");

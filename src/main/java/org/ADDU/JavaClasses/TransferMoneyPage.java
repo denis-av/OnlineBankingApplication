@@ -50,6 +50,18 @@ public class TransferMoneyPage extends JFrame{
         throw new CouldNotFindBeneficiar();
     }
 
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            int d = Integer.parseInt(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
     public JPanel returnPanel() {
 
         principal = new JPanel();
@@ -100,10 +112,15 @@ public class TransferMoneyPage extends JFrame{
                 try{
                         int sumaClient, sumaBeneficiar;
                         beneficiar=theBeneficiar();
-                        sumaClient = (Integer.parseInt(client1.getSold()) - Integer.parseInt(desiredAmount.getText()));
-                        sumaBeneficiar = (Integer.parseInt(beneficiar.getSold()) + Integer.parseInt(desiredAmount.getText()));
-                        scriereCitireClient.scriereClient(String.valueOf(sumaClient),client1);
-                        scriereCitireClient.scriereClient(String.valueOf(sumaBeneficiar),beneficiar);
+                        if(isNumeric(desiredAmount.getText()))
+                        {
+                            sumaClient = (Integer.parseInt(client1.getSold()) - Integer.parseInt(desiredAmount.getText()));
+                            sumaBeneficiar = (Integer.parseInt(beneficiar.getSold()) + Integer.parseInt(desiredAmount.getText()));
+                            scriereCitireClient.scriereClient(String.valueOf(sumaClient),client1);
+                            scriereCitireClient.scriereClient(String.valueOf(sumaBeneficiar),beneficiar);
+                            JOptionPane.showMessageDialog(principal, "Transfer made successfully!");
+                        }
+                        else JOptionPane.showMessageDialog(principal, "You must introduce a number!");
                         t1.setText("");
                         desiredAmount.setText("");
                 }catch (RuntimeException exp){
