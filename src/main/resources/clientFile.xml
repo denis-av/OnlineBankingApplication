@@ -7,7 +7,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
         <firstName>Sebastian</firstName>
         <lastName>Sofran</lastName>
         <iban>RO43231IBAN342</iban>
-        <sold>13750</sold>
+        <sold>13600</sold>
         <managerID>1</managerID>
         <loans>
             <loan>
@@ -28,7 +28,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
                 <message>6.12.2023 - deadline</message>
                 <usernameClient>sebi99</usernameClient>
             </loan>
-        <loan><desiredAmount>1200</desiredAmount><status>Rejected</status><message>Noooo</message><usernameClient>sebi99</usernameClient></loan></loans>
+        </loans>
     </client>
     <client cardNumber="5678">
         <username>belegea</username>
@@ -36,7 +36,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
         <firstName>Cristina</firstName>
         <lastName>Golban</lastName>
         <iban>RO43246IBAN307</iban>
-        <sold>9000</sold>
+        <sold>8750</sold>
         <managerID>1</managerID>
         <loans>
             <loan>
@@ -51,7 +51,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
                 <message>It's not ok!</message>
                 <usernameClient>belegea</usernameClient>
             </loan>
-        </loans>
+        <loan><desiredAmount>300</desiredAmount><status>Accepted</status><message>Ok!</message><usernameClient>belegea</usernameClient></loan></loans>
     </client>
     <client cardNumber="9012">
         <username>vic</username>
@@ -59,7 +59,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
         <firstName>Victor</firstName>
         <lastName>Bobosila</lastName>
         <iban>RO13456IBAN965</iban>
-        <sold>2700</sold>
+        <sold>3250</sold>
         <managerID>2</managerID>
         <loans>
             <loan>
@@ -76,7 +76,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
         <firstName>Diana</firstName>
         <lastName>Bucu</lastName>
         <iban>RO13456IBAN356</iban>
-        <sold>10150</sold>
+        <sold>10000</sold>
         <managerID>2</managerID>
         <loans>
             <loan>
