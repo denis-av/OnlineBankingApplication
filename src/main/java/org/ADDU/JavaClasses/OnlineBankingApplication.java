@@ -1,6 +1,11 @@
 package org.ADDU.JavaClasses;
 
+import org.apache.commons.io.FileUtils;
+
 import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.awt.*;
 import java.awt.event.*;
 import java.nio.charset.StandardCharsets;
@@ -56,8 +61,19 @@ public class OnlineBankingApplication extends JFrame{
     JFrame mainFrame = new JFrame("Online Banking Application");
 
     //Constructor
-    public OnlineBankingApplication(){
+    public OnlineBankingApplication() throws IOException {
+        copyData();
         initComponents();
+    }
+
+    public void copyData() throws IOException {
+        FileUtils.copyURLToFile(OnlineBankingApplication.class.getClassLoader().getResource("clientFile.xml"), new File("src/main/resources/clientFile.xml"));
+        FileUtils.copyURLToFile(OnlineBankingApplication.class.getClassLoader().getResource("background.jpg"), new File("src/main/resources/background.jpg"));
+        FileUtils.copyURLToFile(OnlineBankingApplication.class.getClassLoader().getResource("backf.jpg"), new File("src/main/resources/backf.jpg"));
+        FileUtils.copyURLToFile(OnlineBankingApplication.class.getClassLoader().getResource("manager.xml"), new File("src/main/resources/manager.xml"));
+        FileUtils.copyURLToFile(OnlineBankingApplication.class.getClassLoader().getResource("myclientsback.jpg"), new File("src/main/resources/myclientsback.jpg"));
+        FileUtils.copyURLToFile(OnlineBankingApplication.class.getClassLoader().getResource("myloansback.jpg"), new File("src/main/resources/myloansback.jpg"));
+        FileUtils.copyURLToFile(OnlineBankingApplication.class.getClassLoader().getResource("recivedloanback.jpg"), new File("src/main/resources/recivedloanback.jpg"));
     }
 
     public static String encodePassword(String salt, String password) {
@@ -91,7 +107,7 @@ public class OnlineBankingApplication extends JFrame{
         login.setSize(350, 450);
         login.setLayout(null);
         login.setBackground(new Color(0, 0, 0, 0));
-        login.setBounds(0, 0, 666, 403);
+        login.setBounds(0, 0, 665, 403);
 
         screenUsername = new JLabel("Enter your username!*");
         screenUsername.setBounds(380, 73, 200, 30);
@@ -217,7 +233,11 @@ public class OnlineBankingApplication extends JFrame{
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new OnlineBankingApplication();
+                try {
+                    new OnlineBankingApplication();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
