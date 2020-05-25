@@ -58,8 +58,8 @@ public class SEERequests extends JFrame {
         principal = new JPanel();
 
         principal = new JPanel();
-        principal.setSize(350, 300);
-        principal.setBounds(0, 0, 750, 450);
+        //principal.setSize(350, 300);
+        principal.setBounds(0, 0, 665, 403);
         principal.setLayout(null);
 
 
@@ -193,6 +193,14 @@ public class SEERequests extends JFrame {
                 t22.setText("");
                 t33.setText("");
                 t44.setText("");
+            }
+        });
+
+        cancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+                dialog.getContentPane().removeAll();
             }
         });
 
