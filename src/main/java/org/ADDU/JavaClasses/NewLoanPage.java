@@ -20,13 +20,16 @@ public class NewLoanPage extends JFrame{
     private JPanel principal;
     private JPanel contPanel = new JPanel();
     private CardLayout cardLOUT=new CardLayout();
-    private ScriereCitireManager scriereCitireManager=new ScriereCitireManager();
+    private static String file2;
+    private ScriereCitireManager scriereCitireManager;
     private Font fondText=new Font("Calibri Light (Headings)", Font.BOLD,13);
     private JButton buttonBack;
 
-    public NewLoanPage(Client client,Manager manager){
+    public NewLoanPage(Client client,Manager manager,String file2){
         this.client=client;
         this.manager=manager;
+        this.file2=file2;
+        scriereCitireManager=new ScriereCitireManager(file2);
     }
 
     public Manager theManager(){

@@ -7,7 +7,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
         <firstName>Sebastian</firstName>
         <lastName>Sofran</lastName>
         <iban>RO43231IBAN342</iban>
-        <sold>13600</sold>
+        <sold>12000</sold>
         <managerID>1</managerID>
         <loans>
             <loan>
@@ -28,7 +28,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
                 <message>6.12.2023 - deadline</message>
                 <usernameClient>sebi99</usernameClient>
             </loan>
-        </loans>
+        <loan><desiredAmount>7000</desiredAmount><status>rejected</status><message>not ok</message><usernameClient>sebi99</usernameClient></loan></loans>
     </client>
     <client cardNumber="5678">
         <username>belegea</username>
@@ -36,7 +36,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
         <firstName>Cristina</firstName>
         <lastName>Golban</lastName>
         <iban>RO43246IBAN307</iban>
-        <sold>8750</sold>
+        <sold>10600</sold>
         <managerID>1</managerID>
         <loans>
             <loan>
@@ -51,7 +51,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
                 <message>It's not ok!</message>
                 <usernameClient>belegea</usernameClient>
             </loan>
-        <loan><desiredAmount>300</desiredAmount><status>Accepted</status><message>Ok!</message><usernameClient>belegea</usernameClient></loan></loans>
+        <loan><desiredAmount>300</desiredAmount><status>Accepted</status><message>Ok!</message><usernameClient>belegea</usernameClient></loan><loan><desiredAmount>1150</desiredAmount><status>Accepted</status><message>ok</message><usernameClient>belegea</usernameClient></loan></loans>
     </client>
     <client cardNumber="9012">
         <username>vic</username>
@@ -59,7 +59,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
         <firstName>Victor</firstName>
         <lastName>Bobosila</lastName>
         <iban>RO13456IBAN965</iban>
-        <sold>3250</sold>
+        <sold>3000</sold>
         <managerID>2</managerID>
         <loans>
             <loan>
@@ -68,7 +68,7 @@ s���A{��&#23;Y�-&#21;拋f��</password>
                 <message>19.03.2021 - deadline</message>
                 <usernameClient>vic</usernameClient>
             </loan>
-        </loans>
+        <loan><desiredAmount>1500</desiredAmount><status>Accepted</status><message>Ok!</message><usernameClient>vic</usernameClient></loan></loans>
     </client>
     <client cardNumber="3456">
         <username>cucu</username>

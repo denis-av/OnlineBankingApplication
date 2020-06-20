@@ -16,12 +16,14 @@ public class ClientMainInterface extends JFrame{
     private JButton buttonTransfer;
     private JFrame frame2;
     private Client client;
+    private static String file;
+    private static String file2;
     private JLabel background;
     private JButton buttonRequest;
     private JButton buttonLoans;
     private JButton logoutButton;
-    private ScriereCitireManager theManager=new ScriereCitireManager();
-    private ScriereCitireClient theClient = new ScriereCitireClient();
+    private ScriereCitireManager theManager;
+    public ScriereCitireClient theClient;
     private JPanel principal;
     private JPanel contPanel = new JPanel();
     private CardLayout cardLOUT=new CardLayout();
@@ -30,12 +32,20 @@ public class ClientMainInterface extends JFrame{
     private TransferMoneyPage transferPage;
     private SeeRequestsPage rqPage;
 
-    public ClientMainInterface(Client client){
+    public ClientMainInterface(Client client,String file,String file2){
         this.client=client;
+        this.file=file;
+        this.file2=file2;
+        theManager=new ScriereCitireManager(file2);
+        theClient = new ScriereCitireClient(file);
     }
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public Client getClient(){
+        return this.client;
     }
 
     public JButton getButtonSold() {
@@ -61,8 +71,8 @@ public class ClientMainInterface extends JFrame{
     public JPanel returnPanelMainClinet(){
 
         soldPage = new SeeSoldPage(client);
-        newLoanPage=new NewLoanPage(client,theManager.returnManager(client.getManagerId()));
-        transferPage = new TransferMoneyPage(client,theClient.returnClient());
+        newLoanPage=new NewLoanPage(client,theManager.returnManager(client.getManagerId()),file2);
+        transferPage = new TransferMoneyPage(client,theClient.returnClient(),file);
         rqPage = new SeeRequestsPage(client);
         contPanel.setLayout(cardLOUT);
 

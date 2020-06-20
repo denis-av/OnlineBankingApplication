@@ -22,17 +22,20 @@ public class TransferMoneyPage extends JFrame{
     private Client beneficiar = new Client();
     private ArrayList<Client> client2 = new ArrayList<Client>();
     private JLabel background;
+    private static String file;
     JPanel principal;
     JPanel contPanel = new JPanel();
     CardLayout cardLOUT=new CardLayout();
 
-    private ScriereCitireClient scriereCitireClient = new ScriereCitireClient();
+    private ScriereCitireClient scriereCitireClient;
     private Font fondText=new Font("Calibri Light (Headings)", Font.BOLD,13);
     private JButton buttonBack;
 
-    public TransferMoneyPage(Client client1,ArrayList<Client> client2){
+    public TransferMoneyPage(Client client1,ArrayList<Client> client2,String file){
         this.client1 = client1;
         this.client2 = client2;
+        this.file=file;
+        scriereCitireClient = new ScriereCitireClient(file);
     }
 
     public JButton getButtonBack() {
@@ -43,9 +46,9 @@ public class TransferMoneyPage extends JFrame{
         return send;
     }
 
-    public Client theBeneficiar(){
+    public Client theBeneficiar(String x){
         for(int i=0; i<client2.size(); i++){
-            if(t1.getText().equals(client2.get(i).getIban())) return client2.get(i);
+            if(x.equals(client2.get(i).getIban())) return client2.get(i);
         }
         throw new CouldNotFindBeneficiar();
     }
@@ -111,7 +114,7 @@ public class TransferMoneyPage extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try{
                         int sumaClient, sumaBeneficiar;
-                        beneficiar=theBeneficiar();
+                        beneficiar=theBeneficiar(t1.getText());
                         if(isNumeric(desiredAmount.getText()))
                         {
                             sumaClient = (Integer.parseInt(client1.getSold()) - Integer.parseInt(desiredAmount.getText()));

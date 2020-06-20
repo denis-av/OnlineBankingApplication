@@ -19,6 +19,7 @@ public class ManagerMainInterface extends JFrame {
     private JButton buttonClients;
     private JButton buttonLoans;
     private Manager manager;
+    private static String file;
     private JLabel background;
     private JButton buttonRequest;
     private JButton logoutButton;
@@ -26,13 +27,18 @@ public class ManagerMainInterface extends JFrame {
     private JPanel contPanel = new JPanel();
     private CardLayout cardLOUT = new CardLayout();
     private SeeMyClients MYCLIENTS;
-    public ArrayList<Client> myClient=new ArrayList<Client>();
-    private ScriereCitireClient theClient = new ScriereCitireClient();
-    private ArrayList<Client> allClients=theClient.returnClient();
+    private static String file2;
+    public ArrayList<Client> myClient;
+    private ScriereCitireClient theClient;
+    private ArrayList<Client> allClients;
     private SEERequests myRequests;
 
-    public ManagerMainInterface(Manager manager) {
+    public ManagerMainInterface(Manager manager,String file,String file2) {
         this.manager = manager;
+        this.file=file;
+        this.file2=file2;
+        theClient = new ScriereCitireClient(file2);
+        allClients=theClient.returnClient();
         addMyClients();
     }
 
@@ -52,25 +58,36 @@ public class ManagerMainInterface extends JFrame {
         return logoutButton;
     }
 
-    public void addAClient(String cardNumber){
+   public void addAClient(String cardNumber){
         int find=0;
-        for(int i=0;i<allClients.size();i++)
-            if(allClients.get(i).getCardNumber().equals(cardNumber)) {
-                find = 1;
+       for(int i=0;i<allClients.size();i++){
+            if (allClients.get(i).getCardNumber().equals(cardNumber)) {
                 myClient.add(allClients.get(i));
+                find = 1;
             }
-        if (find==0) throw new CouldNotFindClient();
-    }
+        }
+        if(find==0) throw new CouldNotFindClient();
+   }
+
 
     public void addMyClients(){
+        myClient=new ArrayList<Client>();
         for(int i=0;i<manager.getCards().size();i++)
-            addAClient(manager.getCards().get(i));
+        {
+            int find=0;
+            for(int j=0;j<allClients.size() && find==0;j++)
+                if(allClients.get(j).getCardNumber().equals(manager.getCards().get(i))){
+                    myClient.add(allClients.get(j));
+                    find=1;
+                }
+            if(find==0) throw new CouldNotFindClient();
+        }
     }
 
     public JPanel returnPanelMainManager() {
         contPanel.setLayout(cardLOUT);
         MYCLIENTS=new SeeMyClients(manager,myClient);
-        myRequests=new SEERequests(manager);
+        myRequests=new SEERequests(manager,file,file2);
 
         principal = new JPanel();
         principal.setSize(350, 300);

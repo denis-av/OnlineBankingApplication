@@ -28,13 +28,27 @@ public class SEERequests extends JFrame {
     private JDialog dialog=new JDialog();
     private JPanel contPanel = new JPanel();
     private CardLayout cardLOUT=new CardLayout();
-    private ScriereCitireManager scr=new ScriereCitireManager();
-    private  ScriereCitireClient scrc=new ScriereCitireClient();
+    private static String file2;
+    private static String file;
+    private ScriereCitireManager scr=new ScriereCitireManager(file);
+    private  ScriereCitireClient scrc=new ScriereCitireClient(file2);
     private Font fondText=new Font("Calibri Light (Headings)", Font.BOLD,13);
     private Font fondText2=new Font("Calibri Light (Headings)", Font.BOLD,23);
 
-    public SEERequests(Manager manager){
+    public SEERequests(Manager manager,String file,String file2){
         this.manager=manager;
+        this.file=file;
+        this.file2=file2;
+        scr=new ScriereCitireManager(file);
+        scrc=new ScriereCitireClient(file2);
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
     }
 
     public static boolean isNumeric(String strNum) {
@@ -189,10 +203,11 @@ public class SEERequests extends JFrame {
                         JOptionPane.showMessageDialog(dialog, "Your decision was sent!");
                     }
                 else JOptionPane.showMessageDialog(principal, "You must introduce a number!");
+                /*
                 t11.setText("");
                 t22.setText("");
                 t33.setText("");
-                t44.setText("");
+                t44.setText("");*/
             }
         });
 

@@ -26,6 +26,11 @@ import org.xml.sax.SAXException;
 
 public class ScriereCitireManager {
     private int idManager;
+    private String file;
+
+    public ScriereCitireManager(String file){
+        this.file=file;
+    }
 
     public Manager returnManager(String MANAGERID){
         Manager items = new Manager();
@@ -34,7 +39,7 @@ public class ScriereCitireManager {
         Loan loan=new Loan();
         try {
             manager=new Manager();
-            File inputFile = new File("src\\main\\resources\\manager.xml");
+            File inputFile = new File(file);
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -114,7 +119,7 @@ public class ScriereCitireManager {
 
     public void scriereManager(String amount, Client client, Manager managerClient){
         try{
-            String filepath = "src\\main\\resources\\manager.xml";
+            String filepath = file;
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(filepath);
@@ -170,7 +175,7 @@ public class ScriereCitireManager {
         int ok = 0;
 
         try{
-            String filepath = "src\\main\\resources\\manager.xml";
+            String filepath = file;
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(filepath);

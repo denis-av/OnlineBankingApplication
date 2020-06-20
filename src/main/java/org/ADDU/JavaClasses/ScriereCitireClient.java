@@ -16,6 +16,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.ADDU.Exceptions.CouldNotFindClient;
+import org.ADDU.Exceptions.CouldNotFindLoan;
 import org.ADDU.Model.Client;
 import org.ADDU.Model.Manager;
 import org.w3c.dom.Document;
@@ -28,6 +29,11 @@ import java.util.*;
 
 public class ScriereCitireClient {
 
+    private static String file;
+
+    public ScriereCitireClient(String file){
+        this.file=file;
+    }
 
     public ArrayList<Client> returnClient(){
 
@@ -37,7 +43,7 @@ public class ScriereCitireClient {
         Loan loan=new Loan();
         try {
             client = new Client();
-            File inputFile = new File("src\\main\\resources\\clientFile.xml");
+            File inputFile = new File(file);
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -117,7 +123,7 @@ public class ScriereCitireClient {
 
     public void scriereClient(String amount, Client client1){
         try{
-            String filepath = "src\\main\\resources\\clientFile.xml";
+            String filepath = file;
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(filepath);
@@ -160,7 +166,7 @@ public class ScriereCitireClient {
     public void scriereClient(String amount, String username,String statuss,String Message){
         int ok=0;
         try{
-            String filepath = "src\\main\\resources\\clientFile.xml";
+            String filepath = file;
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(filepath);
@@ -213,5 +219,62 @@ public class ScriereCitireClient {
             sae.printStackTrace();
         }
     }
+
+    public void stergereLoanClient(String username,String dsrdAmount){
+        Loan loan=new Loan();
+        int ok = 0;
+
+        try{
+            String filepath = file;
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.parse(filepath);
+
+            Node Client = doc.getFirstChild();
+
+
+            for(int j=0;j<doc.getElementsByTagName("loan").getLength();j++) {
+                Node eachLoan = doc.getElementsByTagName("loan").item(j);
+
+                NodeList list = eachLoan.getChildNodes();
+
+                for (int i = 0; i < list.getLength(); i++) {
+
+                    Node node = list.item(i);
+
+                    if ("desiredAmount".equals(node.getNodeName())) {
+                        loan.setDesiredAmount(node.getTextContent());
+                    }
+
+                    if ("usernameClient".equals(node.getNodeName())) {
+                        loan.setUsernameClient(node.getTextContent());
+                        if(loan.getUsernameClient().equals(username) && loan.getDesiredAmount().equals(dsrdAmount))
+                        {
+                            eachLoan.getParentNode().removeChild(eachLoan);
+                            ok = 1;
+                        }
+                        loan = new Loan();
+                    }
+                }
+            }
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File(filepath));
+            transformer.transform(source, result);
+            if (ok==0) throw new CouldNotFindLoan();
+        }catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (SAXException sae) {
+            sae.printStackTrace();
+        }
+    }
+
+
 }
 
