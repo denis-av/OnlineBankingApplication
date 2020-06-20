@@ -9,17 +9,11 @@
             <cardNumber>5678</cardNumber>
         </cards>
         <loans>
-
-            <loan>
-                <desiredAmount>3200</desiredAmount>
-                <usernameClient>sebi99</usernameClient>
-            </loan>
-
-            <loan>
-                <desiredAmount>1000</desiredAmount>
-                <usernameClient>sebi99</usernameClient>
-            </loan>
             
+
+            
+
+
         </loans>
     </Manager>
     <Manager id="2">
@@ -41,7 +35,7 @@
                 <desiredAmount>1700</desiredAmount>
                 <usernameClient>vic</usernameClient>
             </loan>
-        <loan><desiredAmount>1000</desiredAmount><usernameClient>vic</usernameClient></loan></loans>
+        </loans>
     </Manager>
 
 </Managers>

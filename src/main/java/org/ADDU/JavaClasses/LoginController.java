@@ -31,15 +31,17 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 
 public class LoginController {
+    private static String file;
     private String username;
     private String password;
     private String cardNumber;
     private Manager test=new Manager();
     private Client testClient=new Client();
 
-    public LoginController(String username, String password) {
+    public LoginController(String username, String password,String file) {
         this.username = username;
         this.password = password;
+        this.file=file;
         test =this.parseManagerXML(this.username,this.password);
     }
 
@@ -49,10 +51,11 @@ public class LoginController {
         else throw new CouldNotFindManager();
     }
 
-    public LoginController(String username, String password, String cardNumber){
+    public LoginController(String username, String password, String cardNumber,String file){
         this.username = username;
         this.password = password;
         this.cardNumber = cardNumber;
+        this.file=file;
         //testClient=this.readConfig(fileClient,this.cardNumber,this.username,this.password);
         testClient=this.parseClientXML(this.username,this.password,this.cardNumber);
     }
@@ -63,7 +66,7 @@ public class LoginController {
         else throw new CouldNotFindClient();
     }
 
-    public Client parseClientXML(String username,String password,String cardNumber){
+    public static Client parseClientXML(String username, String password, String cardNumber){
         Client items = new Client();
         Client nullItem=new Client();
         Client client = null;
@@ -76,7 +79,7 @@ public class LoginController {
         try {
             client=new Client();
 
-            File inputFile = new File("src\\main\\resources\\clientFile.xml");
+            File inputFile = new File(file);
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -153,13 +156,13 @@ public class LoginController {
         return items;
     }
 
-    public Manager parseManagerXML(String username,String password){
+    public static Manager parseManagerXML(String username, String password){
         Manager items = new Manager();
         Manager manager = null;
         Loan loan=new Loan();
         try {
             manager=new Manager();
-            File inputFile = new File("src\\main\\resources\\manager.xml");
+            File inputFile = new File(file);
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -259,4 +262,5 @@ public class LoginController {
         }
         return md;
     }
+
 }

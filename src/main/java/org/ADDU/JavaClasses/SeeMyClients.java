@@ -26,6 +26,14 @@ public class SeeMyClients extends JFrame {
         this.myClients=myClients;
     }
 
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
     public JButton getButtonBack() {
         return buttonBack;
     }

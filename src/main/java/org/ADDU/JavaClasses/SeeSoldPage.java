@@ -26,6 +26,14 @@ public class SeeSoldPage extends JFrame {
         this.client=client;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     public JButton getButtonBack() {
         return buttonBack;
     }

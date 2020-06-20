@@ -159,9 +159,9 @@ public class OnlineBankingApplication extends JFrame{
                             JOptionPane.WARNING_MESSAGE);
                 }else if (!cardNumber.getText().equals("")) {
                     try{
-                            user = new LoginController(username.getText(),encodePassword(username.getText(),password.getText()), cardNumber.getText());
+                            user = new LoginController(username.getText(),encodePassword(username.getText(),password.getText()), cardNumber.getText(),"src\\main\\resources\\clientFile.xml");
 
-                            clientMainInterface=new ClientMainInterface(user.returnClient());
+                            clientMainInterface=new ClientMainInterface(user.returnClient(),"src\\main\\resources\\clientFile.xml","src\\main\\resources\\manager.xml");
 
                             contPanel.add(clientMainInterface.returnPanelMainClinet(),"2");//the main screen for client operations
 
@@ -184,8 +184,8 @@ public class OnlineBankingApplication extends JFrame{
                 }
                 else if (cardNumber.getText().equals("")){
                     try{
-                            user = new LoginController(username.getText(), encodePassword(username.getText(),password.getText()));
-                                managerMainInterface=new ManagerMainInterface(user.returnManager());
+                            user = new LoginController(username.getText(), encodePassword(username.getText(),password.getText()),"src\\main\\resources\\manager.xml");
+                                managerMainInterface=new ManagerMainInterface(user.returnManager(),"src\\main\\resources\\manager.xml","src\\main\\resources\\clientFile.xml");
 
                                 contPanel.add(managerMainInterface.returnPanelMainManager(),"Main interface for managers");
 
